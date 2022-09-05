@@ -4,10 +4,12 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/databases/*": ["databases/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/interfaces/*": ["interfaces/*"],
       "@/models/*": ["models/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"],
-      "@/types/*": ["types/*"]
+      "@/validators/*": ["validators/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
