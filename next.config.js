@@ -4,4 +4,11 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+const compiler = {
+  styledComponents: {
+    displayName: true,
+    ssr: true,
+  },
+}
+
+module.exports = { ...nextConfig, compiler }
