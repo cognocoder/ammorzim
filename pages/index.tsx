@@ -1,10 +1,11 @@
 import ProductForm from '@/components/ProductForm'
-import ProductsPanel, { ProductsPanelProps } from '@/components/ProductsPanel'
-import { useProductsStore } from '@/hooks/ProductsStore'
+import ProductsPanel from '@/components/ProductsPanel'
+import useProductSlice from '@/hooks/Product.slice'
+import { ProductInterface } from '@/interfaces/Product'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Router from 'next/router'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 
 export async function getStaticProps() {
 	try {
@@ -12,21 +13,33 @@ export async function getStaticProps() {
 		const products = await res.json()
 		return { props: { products } }
 	} catch (error) {
-		return { props: { error: JSON.stringify(error) } }
+		return { props: { error: 'Error: fetch api products failed.' } }
 	}
 }
 
-const Home: NextPage = ({ products, error }: ProductsPanelProps) => {
-	const ProductsStore = useProductsStore((state) => state)
-	const router = useRouter()
+interface Props {
+	products?: ProductInterface[]
+	error?: string
+}
+
+const Home: NextPage = ({ products, error }: Props) => {
+	const ProductSlice = useProductSlice((state) => ({
+		setArray: state.setArray,
+	}))
 
 	useEffect(() => {
-		console.log(ProductsStore.status)
-		if (ProductsStore.status === 'refetch') {
-			ProductsStore.setStatus('')
-			router.reload()
+		Router.prefetch('/')
+		const interval = setTimeout(() => {
+			Router.push('/')
+		}, 60 * 1000)
+		return () => {
+			clearInterval(interval)
 		}
-	})
+	}, [])
+
+	useEffect(() => {
+		ProductSlice.setArray(products || [])
+	}, [products])
 
 	return (
 		<>
@@ -37,7 +50,7 @@ const Home: NextPage = ({ products, error }: ProductsPanelProps) => {
 			</Head>
 			<main>
 				<ProductForm />
-				<ProductsPanel products={products} error={error} />
+				<ProductsPanel error={error || ''} />
 			</main>
 		</>
 	)

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Section } from './ProductForm.styled'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { ProductPatterns } from '@/validators/Product'
-import { useProductsStore } from '@/hooks/ProductsStore'
+import Router from 'next/router'
+import useProductSlice from '@/hooks/Product.slice'
 
 interface ProductFormInputs {
 	name: string
@@ -12,13 +13,16 @@ interface ProductFormInputs {
 }
 
 function ProductForm() {
-	const ProductsStore = useProductsStore((state) => state)
-
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<ProductFormInputs>()
+
+	const ProductSlice = useProductSlice((state) => ({
+		array: state.array,
+		setArray: state.setArray,
+	}))
 
 	const [createProductStatus, setCreateProductStatus] = useState('')
 
@@ -38,21 +42,26 @@ function ProductForm() {
 		})
 
 		if (res.status === 201) {
+			ProductSlice.setArray([...ProductSlice.array, product])
+
 			await fetch('api/products/revalidate', {
 				headers: {
 					pragma: 'no-cache',
 					'cache-control': 'no-cache',
 				},
 			})
-			ProductsStore.setStatus('refetch')
+			Router.prefetch('/')
 
 			setCreateProductStatus('Cadastrado')
-			setTimeout(() => setCreateProductStatus(''), 4000)
+			setTimeout(() => {
+				Router.push('/')
+				setCreateProductStatus('')
+			}, 2000)
 			return
 		}
 
 		setCreateProductStatus('Erro')
-		setTimeout(() => setCreateProductStatus(''), 4000)
+		setTimeout(() => setCreateProductStatus(''), 2000)
 		return
 	}
 

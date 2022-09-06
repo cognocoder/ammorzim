@@ -1,17 +1,22 @@
-import { ProductInterface } from 'interfaces/Product'
+import useProductSlice from '@/hooks/Product.slice'
 import React from 'react'
 import Product from './Product'
 
-export interface ProductListProps {
-	products: ProductInterface[]
-}
+function ProductList() {
+	const products = useProductSlice((state) => state.array)
+	const filter = useProductSlice((state) => state.filter)
 
-function ProductList({ products }: ProductListProps) {
 	return (
 		<>
-			{products.map((product, index) => (
-				<Product product={product} key={index} />
-			))}
+			{products
+				.filter((product) =>
+					filter.length
+						? product.name.toLowerCase().includes(filter.toLowerCase())
+						: true
+				)
+				.map((product, index) => (
+					<Product product={product} key={index} />
+				))}
 		</>
 	)
 }
