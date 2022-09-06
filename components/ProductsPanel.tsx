@@ -34,6 +34,12 @@ function ProductsPanel({ error }: { error: string }) {
 		}
 	}
 
+	const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === 'Enter') {
+			onClick()
+		}
+	}
+
 	return (
 		<Section>
 			<header>
@@ -44,7 +50,12 @@ function ProductsPanel({ error }: { error: string }) {
 				</Link>
 				{ProductSlice.array && ProductSlice.array.length > 0 && (
 					<>
-						<input ref={ref} value={filter.value} onChange={onChange} />
+						<input
+							ref={ref}
+							value={filter.value}
+							onChange={onChange}
+							onKeyDown={onKeyDown}
+						/>
 						<button onClick={onClick}>
 							{filter.sent.length ? 'limpar' : 'enviar'}
 						</button>

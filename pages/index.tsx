@@ -29,8 +29,8 @@ const Home: NextPage = ({ products, error }: Props) => {
 
 	useEffect(() => {
 		Router.prefetch('/')
-		const interval = setTimeout(() => {
-			Router.push('/')
+		const interval = setInterval(() => {
+			Router.push('/', undefined, { scroll: false })
 		}, 60 * 1000)
 		return () => {
 			clearInterval(interval)

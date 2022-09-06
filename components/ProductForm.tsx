@@ -54,7 +54,7 @@ function ProductForm() {
 
 			setCreateProductStatus('Cadastrado')
 			setTimeout(() => {
-				Router.push('/')
+				Router.push('/', undefined, { scroll: false })
 				setCreateProductStatus('')
 			}, 2000)
 			return
