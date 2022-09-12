@@ -30,7 +30,7 @@ export const Section = styled.section`
 	}
 
 	& label span {
-		color: #941;
+		color: ${(props) => props.theme.error};
 		display: block;
 		font-style: italic;
 		margin: 0.25rem 0;

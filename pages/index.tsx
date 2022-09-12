@@ -1,3 +1,4 @@
+import Container from '@/components/Container'
 import ProductForm from '@/components/ProductForm'
 import ProductsPanel from '@/components/ProductsPanel'
 import useProductSlice from '@/hooks/Product.slice'
@@ -44,14 +45,14 @@ const Home: NextPage = ({ products, error }: Props) => {
 	return (
 		<>
 			<Head>
-				<title>ammorzim</title>
-				<meta name="description" content="ammorzim varejo e-commerce" />
+				<title>cap.ammo</title>
+				<meta name="description" content="cap.ammo" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<main>
+			<Container>
 				<ProductForm />
 				<ProductsPanel error={error || ''} />
-			</main>
+			</Container>
 		</>
 	)
 }
