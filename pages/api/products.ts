@@ -17,6 +17,7 @@ export default async function handler(
 	if (req.method === 'POST') {
 		try {
 			const data = await Product.create(req.body as ProductInterface)
+			res.revalidate('/')
 			return res.status(201).json(data)
 		} catch (error) {
 			return res.status(500).json(error)

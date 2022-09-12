@@ -3,6 +3,7 @@ import { Section } from './ProductsPanel.styled'
 import ProductList from './ProductList'
 import useProductSlice from '@/hooks/Product.slice'
 import Link from 'next/link'
+import Router from 'next/router'
 
 function ProductsPanel({ error }: { error: string }) {
 	if (error) console.log(error)
@@ -21,6 +22,9 @@ function ProductsPanel({ error }: { error: string }) {
 	}
 
 	const onClick = () => {
+		Router.prefetch('/')
+		Router.push('/', undefined, { scroll: false })
+
 		if (filter.sent === filter.value) {
 			setFilter({ value: '', sent: '' })
 			ProductSlice.setFilter('')

@@ -43,13 +43,6 @@ function ProductForm() {
 
 		if (res.status === 201) {
 			ProductSlice.setArray([...ProductSlice.array, product])
-
-			await fetch('api/products/revalidate', {
-				headers: {
-					pragma: 'no-cache',
-					'cache-control': 'no-cache',
-				},
-			})
 			Router.prefetch('/')
 
 			setCreateProductStatus('Cadastrado')
@@ -57,6 +50,7 @@ function ProductForm() {
 				Router.push('/', undefined, { scroll: false })
 				setCreateProductStatus('')
 			}, 2000)
+
 			return
 		}
 
