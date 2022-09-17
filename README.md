@@ -10,7 +10,7 @@
 Software licensed by <br>
 ![Badge](https://img.shields.io/github/license/cognocoder/cap.ammo)
 
-## Protótipo de aplicação Web para varejo
+### Protótipo de aplicação Web para varejo
 
 ## Instalação de Dependências e Execução Local
 
