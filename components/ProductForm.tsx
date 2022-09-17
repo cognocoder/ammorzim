@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { Section } from './ProductForm.styled'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import { ProductPatterns } from '@/validators/Product'
+import { useForm, SubmitHandler, Controller } from 'react-hook-form'
+import {
+	ProductPatterns,
+	ProductPriceInputMask,
+	ProductPriceInputValidator,
+} from '@/validators/Product'
 import Router from 'next/router'
 import useProductSlice from '@/hooks/Product.slice'
 
@@ -13,12 +17,6 @@ interface ProductFormInputs {
 }
 
 function ProductForm() {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm<ProductFormInputs>()
-
 	const ProductSlice = useProductSlice((state) => ({
 		array: state.array,
 		setArray: state.setArray,
@@ -26,10 +24,21 @@ function ProductForm() {
 
 	const [createProductStatus, setCreateProductStatus] = useState('')
 
+	const {
+		control,
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<ProductFormInputs>()
+
 	const onSubmit: SubmitHandler<ProductFormInputs> = async (data) => {
+		const price = +data.price
+			.replace(' ', '')
+			.replace('R$', '')
+			.replace(',', '.')
 		const product = {
 			...data,
-			price: +data.price.replace(',', '.'),
+			price,
 		}
 
 		setCreateProductStatus('Pendente')
@@ -97,19 +106,27 @@ function ProductForm() {
 				</label>
 				<label>
 					Preço
-					<input
-						inputMode="numeric"
-						{...register('price', {
+					<Controller
+						control={control}
+						name="price"
+						defaultValue=""
+						rules={{
 							required: {
 								value: true,
 								message: 'Campo obrigatório',
 							},
-							pattern: {
-								value: ProductPatterns.price,
-								message: 'Valor deve ser maior que zero',
-							},
-						})}
-					/>
+							validate: { ProductPriceInputValidator },
+						}}
+						render={({ field }) => (
+							<input
+								inputMode="numeric"
+								{...field}
+								onChange={(event) =>
+									field.onChange(ProductPriceInputMask(event.target.value))
+								}
+							/>
+						)}
+					></Controller>
 					{errors.price && <span>{errors.price.message}</span>}
 				</label>
 				<label>
