@@ -1,10 +1,12 @@
+import type { NextPage } from 'next'
+import Head from 'next/head'
+
 import Container from '@/components/Container'
 import ProductForm from '@/components/ProductForm'
 import ProductsPanel from '@/components/ProductsPanel'
 import useProductSlice from '@/hooks/Product.slice'
 import { ProductInterface } from '@/interfaces/Product'
-import type { NextPage } from 'next'
-import Head from 'next/head'
+
 import { useEffect } from 'react'
 
 export async function getStaticProps() {

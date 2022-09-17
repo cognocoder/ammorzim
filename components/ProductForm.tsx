@@ -1,13 +1,15 @@
+import Router from 'next/router'
 import React, { useState } from 'react'
-import { Section } from './ProductForm.styled'
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
+
+import useProductSlice from '@/hooks/Product.slice'
 import {
 	ProductPatterns,
 	ProductPriceInputMask,
 	ProductPriceInputValidator,
 } from '@/validators/Product'
-import Router from 'next/router'
-import useProductSlice from '@/hooks/Product.slice'
+
+import { Section } from './ProductForm.styled'
 
 interface ProductFormInputs {
 	name: string

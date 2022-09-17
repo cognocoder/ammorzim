@@ -1,5 +1,6 @@
 import create from 'zustand'
 import produce from 'immer'
+
 import { ProductInterface } from '@/interfaces/Product'
 
 export interface ProductSliceInterface {

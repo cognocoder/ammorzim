@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { SyncProduct } from '@/models/Product'
-import { ProductInterface } from 'interfaces/Product'
+import { ProductInterface } from '@/interfaces/Product'
 
 export default async function handler(
 	req: NextApiRequest,

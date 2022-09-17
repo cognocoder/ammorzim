@@ -1,5 +1,6 @@
 import { ProductInterface } from 'interfaces/Product'
 import React from 'react'
+
 import { Article } from './Product.styled'
 
 function Product({ product }: { product: ProductInterface }) {

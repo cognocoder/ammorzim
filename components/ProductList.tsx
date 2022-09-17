@@ -1,5 +1,7 @@
-import useProductSlice from '@/hooks/Product.slice'
 import React from 'react'
+
+import useProductSlice from '@/hooks/Product.slice'
+
 import Product from './Product'
 
 function ProductList() {

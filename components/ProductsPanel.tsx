@@ -1,9 +1,11 @@
-import React, { useRef, useState } from 'react'
-import { Section } from './ProductsPanel.styled'
-import ProductList from './ProductList'
-import useProductSlice from '@/hooks/Product.slice'
 import Link from 'next/link'
 import Router from 'next/router'
+import React, { useRef, useState } from 'react'
+
+import useProductSlice from '@/hooks/Product.slice'
+
+import { Section } from './ProductsPanel.styled'
+import ProductList from './ProductList'
 
 function ProductsPanel({ error }: { error: string }) {
 	if (error) console.log(error)
