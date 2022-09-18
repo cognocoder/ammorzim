@@ -84,27 +84,28 @@ function ProductForm() {
 							},
 							pattern: {
 								value: ProductPatterns.name,
-								message: 'Mínimo de 2 caractéres',
+								message: 'Mínimo de 2 caracteres',
 							},
 						})}
 					/>
 					{errors.name && <span>{errors.name.message}</span>}
 				</label>
 				<label>
-					Categoria
-					<input
-						{...register('category', {
+					Descrição
+					<textarea
+						rows={2}
+						{...register('description', {
 							required: {
 								value: true,
 								message: 'Campo obrigatório',
 							},
 							pattern: {
-								value: ProductPatterns.category,
-								message: 'Mínimo de 4 caractéres',
+								value: ProductPatterns.description,
+								message: 'Mínimo de 10 caracteres',
 							},
 						})}
 					/>
-					{errors.category && <span>{errors.category.message}</span>}
+					{errors.description && <span>{errors.description.message}</span>}
 				</label>
 				<label>
 					Preço
@@ -132,21 +133,20 @@ function ProductForm() {
 					{errors.price && <span>{errors.price.message}</span>}
 				</label>
 				<label>
-					Descrição
-					<textarea
-						rows={2}
-						{...register('description', {
+					Categoria
+					<input
+						{...register('category', {
 							required: {
 								value: true,
 								message: 'Campo obrigatório',
 							},
 							pattern: {
-								value: ProductPatterns.description,
-								message: 'Mínimo de 10 caractéres',
+								value: ProductPatterns.category,
+								message: 'Mínimo de 4 caracteres',
 							},
 						})}
 					/>
-					{errors.description && <span>{errors.description.message}</span>}
+					{errors.category && <span>{errors.category.message}</span>}
 				</label>
 				<p>
 					{createProductStatus}

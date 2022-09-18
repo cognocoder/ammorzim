@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react'
 
 import useProductSlice from '@/hooks/Product.slice'
 
-import { Section } from './ProductsPanel.styled'
+import { SearchContainer, Section } from './ProductsPanel.styled'
 import ProductList from './ProductList'
 
 function ProductsPanel({ error }: { error: string }) {
@@ -50,22 +50,23 @@ function ProductsPanel({ error }: { error: string }) {
 		<Section>
 			<header>
 				<Link href="/">
-					<a>
+					<a title="Atualizar produtos cadastrados">
 						<h2>Produtos cadastrados</h2>
 					</a>
 				</Link>
 				{ProductSlice.array && ProductSlice.array.length > 0 && (
-					<>
+					<SearchContainer>
 						<input
 							ref={ref}
 							value={filter.value}
 							onChange={onChange}
 							onKeyDown={onKeyDown}
+							placeholder="Buscar"
 						/>
 						<button onClick={onClick}>
-							{filter.sent.length ? 'limpar' : 'enviar'}
+							{filter.sent.length ? 'Limpar' : 'Enviar'}
 						</button>
-					</>
+					</SearchContainer>
 				)}
 			</header>
 			{error && <strong>Erro: tente novamente mais tarde</strong>}

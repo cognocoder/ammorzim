@@ -1,12 +1,24 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-	border: 1px solid;
+	background-color: ${(props) => props.theme.card['background-color']};
+	border: ${(props) => props.theme.card.border};
+	border-radius: ${(props) => props.theme.card['border-radius']};
+	box-shadow: ${(props) => props.theme.card['box-shadow']};
+	color: ${(props) => props.theme.card.color};
+
 	padding: 1rem;
 	padding-top: 0;
 	margin: 1rem;
 	margin-top: 4rem;
+
 	min-width: 300px;
+	width: 100%;
+
+	@media only screen and (min-width: 664px) {
+		position: sticky;
+		top: 4rem;
+	}
 
 	& h2 {
 		font-size: 1.5rem;
@@ -14,13 +26,11 @@ export const Section = styled.section`
 		margin: 1rem 0;
 	}
 
-	& button {
-		padding: 0 1rem;
-	}
-
 	& input,
 	& textarea,
 	& label {
+		font-size: 1.125rem;
+		margin-top: 0.5rem;
 		width: 100%;
 	}
 
@@ -30,7 +40,7 @@ export const Section = styled.section`
 	}
 
 	& label span {
-		color: ${(props) => props.theme.error};
+		color: ${(props) => props.theme.form['color:error']};
 		display: block;
 		font-style: italic;
 		margin: 0.25rem 0;
@@ -46,7 +56,11 @@ export const Section = styled.section`
 	}
 
 	& textarea {
-		min-height: 42px;
+		min-height: 4.5rem;
 		resize: vertical;
+	}
+
+	@media only screen and (min-width: 664px) {
+		width: initial;
 	}
 `

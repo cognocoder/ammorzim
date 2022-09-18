@@ -1,8 +1,14 @@
 import styled from 'styled-components'
 
+export const SearchContainer = styled.div`
+	margin-bottom: 0.5rem;
+	position: relative;
+`
+
 export const Section = styled.section`
 	margin: 0 1rem;
 	min-width: 300px;
+	width: 100%;
 
 	& h2 {
 		font-size: 1.5rem;
@@ -12,28 +18,38 @@ export const Section = styled.section`
 	}
 
 	& button {
-		margin: 4px;
-		padding: 0 1rem;
+		font-size: 1.125rem;
+		padding: 0 2.75rem;
 		position: absolute;
-		right: 0;
+		top: 8px;
+		right: 8px;
+		height: calc(100% - 16px);
 	}
 
 	& input {
 		line-height: 1.5rem;
-		margin-bottom: 1rem;
 		width: 100%;
+		position: relative;
 	}
 
 	& header {
-		background-color: #fff;
-		position: sticky;
-		top: 0;
+		background-color: ${(props) => props.theme.container['background-color']};
+		color: ${(props) => props.theme.container.color};
+
+		padding-bottom: 0.5rem;
+		padding-right: 1rem;
+
+		width: calc(100% + 1rem);
+
+		@media only screen and (min-width: 664px) {
+			position: sticky;
+			top: 0;
+			z-index: 1;
+		}
 	}
 
 	@media only screen and (min-width: 664px) {
-		max-height: 100vh;
 		max-width: 600px;
-		overflow-y: scroll;
 		padding-right: 1rem;
 	}
 `
