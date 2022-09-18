@@ -1,5 +1,5 @@
 import Router from 'next/router'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 
 import useProductSlice from '@/hooks/Product.slice'
@@ -19,16 +19,18 @@ interface ProductFormInputs {
 }
 
 function ProductForm() {
+	const ref = useRef<HTMLLabelElement>(null)
+	const [createProductStatus, setCreateProductStatus] = useState('')
+
 	const ProductSlice = useProductSlice((state) => ({
 		array: state.array,
 		setArray: state.setArray,
 	}))
 
-	const [createProductStatus, setCreateProductStatus] = useState('')
-
 	const {
 		control,
 		register,
+		reset,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<ProductFormInputs>()
@@ -57,6 +59,8 @@ function ProductForm() {
 			Router.prefetch('/')
 
 			setCreateProductStatus('Cadastrado')
+			reset()
+			ref.current?.click()
 			setTimeout(() => {
 				Router.push('/', undefined, { scroll: false })
 				setCreateProductStatus('')
@@ -74,7 +78,7 @@ function ProductForm() {
 		<Section>
 			<h2>Cadastro de produtos</h2>
 			<form onSubmit={handleSubmit(onSubmit)} noValidate>
-				<label>
+				<label ref={ref}>
 					Nome
 					<input
 						{...register('name', {
