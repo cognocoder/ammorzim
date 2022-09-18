@@ -31,8 +31,6 @@ export const ProductPriceInputMask = function (value: string) {
 	num = num.replace(/\D/g, '')
 	cents = cents.replace(/\D/g, '')
 
-	console.log(num, cents)
-
 	let n: string = '0'
 	let c: string
 
@@ -55,7 +53,7 @@ export const ProductPriceInputMask = function (value: string) {
 	if (isNaN(+n)) {
 		n = '0'
 	}
-	if (isNaN(+c)) {
+	if (isNaN(+c) || c == '0') {
 		c = '00'
 	}
 
@@ -65,6 +63,6 @@ export const ProductPriceInputMask = function (value: string) {
 export const ProductPatterns = {
 	name: /^.{2,}$/,
 	category: /^.{4,}$/,
-	description: /^.{10,}$/,
+	description: /^[\s\S]{10,}$/,
 	price: /^\s*(?<cur>R\$)?\s*(?<num>\d*)(?:(?:[\.\,])?(?<cents>\d{1,2})?)$/,
 }
