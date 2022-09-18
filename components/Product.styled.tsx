@@ -22,6 +22,10 @@ export const Article = styled.article<ProductInterface>`
 		transition: all 0.05s ease-in-out;
 	}
 
+	&:first-child {
+		margin-top: 0.75rem;
+	}
+
 	& h3 {
 		margin: 0.5rem 0;
 	}

@@ -18,6 +18,11 @@ export const theme = {
 	form: {
 		...options,
 	},
+	header: {
+		...options,
+		'background-color': '#cce',
+		'border-bottom': '1px solid #4448',
+	},
 }
 
 export const dark = {}

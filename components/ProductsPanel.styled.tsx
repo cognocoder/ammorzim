@@ -15,6 +15,7 @@ export const Section = styled.section`
 		line-height: 1.5rem;
 		margin: 0;
 		padding: 1.25rem 0;
+		padding-left: 0.75rem;
 	}
 
 	& button {
@@ -28,15 +29,17 @@ export const Section = styled.section`
 
 	& input {
 		line-height: 1.5rem;
-		width: 100%;
+		width: calc(100% - 0.75rem);
+		margin-left: 0.75rem;
 		position: relative;
 	}
 
 	& header {
-		background-color: ${(props) => props.theme.container['background-color']};
-		color: ${(props) => props.theme.container.color};
+		background-color: ${(props) => props.theme.header['background-color']};
+		color: ${(props) => props.theme.header.color};
+		border-bottom: ${(props) => props.theme.header['border-bottom']};
 
-		padding-bottom: 0.5rem;
+		padding-bottom: 0.25rem;
 		padding-right: 1rem;
 
 		width: calc(100% + 1rem);
