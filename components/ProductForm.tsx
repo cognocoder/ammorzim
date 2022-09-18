@@ -33,7 +33,14 @@ function ProductForm() {
 		reset,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<ProductFormInputs>()
+	} = useForm<ProductFormInputs>({
+		defaultValues: {
+			name: '',
+			description: '',
+			price: '',
+			category: '',
+		},
+	})
 
 	const onSubmit: SubmitHandler<ProductFormInputs> = async (data) => {
 		const price = +data.price
