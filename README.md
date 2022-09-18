@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/cognocoder/cap.ammo/blob/main/public/banner.jpg?raw=true" max-height="150px" width="100%" alt="Projeto cap.ammo" />
+  <img src="https://github.com/cognocoder/cap.ammo/blob/main/public/banner.png?raw=true" max-height="150px" width="100%" alt="Projeto cap.ammo" />
 </p>
 
 # cap.ammo

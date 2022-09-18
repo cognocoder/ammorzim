@@ -17,8 +17,17 @@ export const Article = styled.article<ProductInterface>`
 	padding: 0.5rem 1rem;
 	transition: all 0.2s ease-in-out;
 
+	&:hover {
+		transform: scale(1.01);
+		transition: all 0.05s ease-in-out;
+	}
+
 	& h3 {
 		margin: 0.5rem 0;
+	}
+
+	& h3 > span:nth-child(2) {
+		padding: 0 1ex;
 	}
 
 	& p {
@@ -28,10 +37,5 @@ export const Article = styled.article<ProductInterface>`
 	& p:last-child {
 		margin: 1rem 0;
 		text-align: right;
-	}
-
-	&:hover {
-		transform: scale(1.01);
-		transition: all 0.05s ease-in-out;
 	}
 `
