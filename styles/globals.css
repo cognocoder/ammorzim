@@ -24,3 +24,15 @@ input, textarea {
   font-size: 1.25rem;
   padding: .75rem;
 }
+
+p {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+span {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
