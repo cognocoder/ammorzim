@@ -35,10 +35,7 @@ function ProductForm() {
 		formState: { errors },
 	} = useForm<ProductFormInputs>({
 		defaultValues: {
-			name: '',
-			description: '',
 			price: '',
-			category: '',
 		},
 	})
 
