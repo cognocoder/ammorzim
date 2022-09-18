@@ -1,11 +1,18 @@
 import styled from 'styled-components'
 
-export const Article = styled.article`
+import { ProductInterface } from '@/interfaces/Product'
+import { ProductPriceValidator } from '@/validators/Product'
+
+export const Article = styled.article<ProductInterface>`
 	background-color: ${(props) => props.theme.card['background-color']};
 	border: ${(props) => props.theme.card.border};
 	border-radius: ${(props) => props.theme.card['border-radius']};
 	box-shadow: ${(props) => props.theme.card['box-shadow']};
-	color: ${(props) => props.theme.card.color};
+	color: ${(props) => {
+		return ProductPriceValidator(props.price)
+			? props.theme.card.color
+			: props.theme.card['color:error']
+	}};
 	margin-bottom: 1rem;
 	padding: 0.5rem 1rem;
 	transition: all 0.2s ease-in-out;

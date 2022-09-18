@@ -41,11 +41,9 @@ export const Section = styled.section`
 
 		width: calc(100% + 1rem);
 
-		@media only screen and (min-width: 664px) {
-			position: sticky;
-			top: 0;
-			z-index: 1;
-		}
+		position: sticky;
+		top: 0;
+		z-index: 1;
 	}
 
 	@media only screen and (min-width: 664px) {

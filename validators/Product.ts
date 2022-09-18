@@ -1,5 +1,6 @@
 export const ProductPriceValidator = function isGreaterThanZero(value: number) {
-	if (value <= 0) return false
+	const nomatch = !ProductPatterns.price.exec(String(value))
+	if (nomatch || value <= 0) return false
 	return true
 }
 
