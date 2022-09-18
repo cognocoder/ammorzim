@@ -12,6 +12,12 @@ Software licensed by <br>
 
 ## Protótipo de aplicação Web para varejo
 
+Utilizou-se **Node.js** versão **16.16** para o desenvolvimento deste projeto.
+
+```bash
+node --version  # v16.16.0
+```
+
 ### Instalação de Dependências
 
 ```bash
@@ -42,7 +48,7 @@ Para descartar dados cadastrados, basta descartar o arquivo.
 ### Dependências
 
 Ambiente <br>
-![badge](https://img.shields.io/badge/node-18.7.14-%23902?style=flat) <br>
+![badge](https://img.shields.io/badge/node-16.16-%23902?style=flat) <br>
 ![badge](https://img.shields.io/badge/typescript-4.8.2-%23555?style=flat)
 
 Front End <br>
